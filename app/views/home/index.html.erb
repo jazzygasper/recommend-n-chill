@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app='recommendNChill'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="movies" ng-controller='movieList as list'>
+      <p ng-repeat='movie in list'>
+        {{ movie.all }}
+      </p>
+    </div>
+  </body>
+</html>
