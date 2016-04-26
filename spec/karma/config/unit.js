@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '/',
+    basePath: '../',
 
 
     // frameworks to use
@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      APPLICATION_SPEC,
       'app/assets/javascripts/**/*.js',
       'spec/test/unit/**/*.js'
     ],
@@ -41,7 +42,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    port: 3000,
 
 
     // enable / disable colors in the output (reporters and logs)
