@@ -15,5 +15,5 @@
 //= require angular
 //= require_tree .
 
-//= require app.js
 //= require_directory ./controllers
+//= require app
