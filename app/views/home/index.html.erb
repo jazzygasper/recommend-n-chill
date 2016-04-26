@@ -5,9 +5,9 @@
     <title></title>
   </head>
   <body>
-    <div id="movies" ng-controller='movieList as list'>
-      <p ng-repeat='movie in list'>
-        {{ movie.all }}
+    <div id="movies" ng-controller='recommendNChill as list'>
+      <p ng-repeat='movie in list.movies'>
+        {{ movie }}
       </p>
     </div>
   </body>
