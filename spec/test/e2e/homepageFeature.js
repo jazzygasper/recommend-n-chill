@@ -1,5 +1,6 @@
 describe('recommendNChill', function(){
-  var movies = $$('#movies p');
+  var movies = $$('#movies p span');
+  var movieCount = 2;
 
   it('shows a list of movies', function(){
     browser.get('/');
@@ -15,4 +16,9 @@ describe('recommendNChill', function(){
     expect(movies.last().getText()).toEqual('Pitch Perfect');
   });
 
+  it('can remove a film from list', function(){
+    browser.get('/');
+    $('#remove-movie').click();
+    expect(movies.count()).toEqual(movieCount - 1);
+  });
 });

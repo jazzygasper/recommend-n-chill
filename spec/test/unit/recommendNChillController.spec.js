@@ -16,4 +16,11 @@ describe('recommendNChillController', function(){
     ctrl.addMovie('Pitch Perfect');
     expect(ctrl.movies.pop()).toEqual('Pitch Perfect');
   });
+
+  it('removes a movie to the list', function(){
+    var movies = ['Armageddon', 'Scorpion King'];
+    ctrl.removeMovie('Armageddon');
+    expect(ctrl.movies).toEqual(['Scorpion King']);
+  });
+
 });
