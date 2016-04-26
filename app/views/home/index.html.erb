@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app='recommendNChill'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="movies" ng-controller='recommendNChill as list'>
+      <input type=text id='new-movie' placeholder='Add movie' ng-model='movieName'/>
+      <button id='add-movie' ng-click='list.addMovie(movieName)'>Add Movie</button>
+      <p ng-repeat='movie in list.movies'>
+       <span>{{ movie }}</span> <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
+      </p>
+    </div>
+  </body>
+</html>
