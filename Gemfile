@@ -22,7 +22,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery'
   gem 'rails-assets-angular-resource'
   gem 'rails-assets-angular-mocks'
-  gem 'rails-assets-angular-route'
+  gem 'rails-assets-angular-route', '~>1.4.0'
   gem 'rails-assets-karma'
   gem 'rails-assets-karma-jasmine'
   gem 'rails-assets-karma-chrome-launcher'
