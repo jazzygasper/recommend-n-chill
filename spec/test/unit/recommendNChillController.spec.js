@@ -5,7 +5,10 @@ describe('recommendNChillController', function(){
   var deferred, scope;
 
   var movieSearch = 'taken';
-  var movieTitleList = ['taken 1', 'taken 2'];
+  var movie1 = {title: 'taken 1', id: 10};
+  var movie2 = {title: 'taken 2', id: 202};
+
+  var movieTitleList = [movie1,movie2];
 
   beforeEach(inject(function($controller, $rootScope, $q){
     deferred = $q.defer();
@@ -20,28 +23,24 @@ describe('recommendNChillController', function(){
     });
   }));
 
-  it('has a list of movies', function(){
-    var movies = ['Armageddon', 'Scorpion King'];
-    expect(ctrl.movies).toEqual(movies);
-  });
-
   it('fetches movie titles based on search from API', function() {
-    ctrl.searchForMovie(movieSearch)
+    ctrl.searchForMovie(movieSearch);
     scope.$apply();
     expect(ctrl.movieSearchResults).toEqual(movieTitleList);
   });
 
   it('adds a movie to the list', function(){
-    ctrl.searchForMovie(movieSearch)
+    ctrl.searchForMovie(movieSearch);
     scope.$apply();
-    ctrl.addMovie('taken 1');
-    expect(ctrl.movies).toContain('taken 1');
+    ctrl.addMovie(10);
+
+    expect(ctrl.movies).toContain(movie1);
   });
 
   it('removes a movie to the list', function(){
-    var movies = ['Armageddon', 'Scorpion King'];
-    ctrl.removeMovie('Armageddon');
-    expect(ctrl.movies).toEqual(['Scorpion King']);
+    ctrl.movies = [movie1, movie2];
+    ctrl.removeMovie(movie1.id);
+    expect(ctrl.movies).toEqual([movie2]);
   });
 
 });
