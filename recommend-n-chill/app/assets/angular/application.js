@@ -17,3 +17,5 @@
 //= require angular-resource
 //= require angular-route
 //= require_tree .
+//= require_directory ./angular/controllers
+//= require_directory ./angular/templates
