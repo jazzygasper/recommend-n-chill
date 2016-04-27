@@ -5,10 +5,10 @@ describe('recommendNChillController', function(){
   var deferred, scope;
 
   var movieSearch = 'taken';
-  var movie1 = {title: 'taken 1', id: 10};
-  var movie2 = {title: 'taken 2', id: 202};
+  var movie1 = {title: 'taken 1', id: 10, image_url: 'taken_1_image.jpg'};
+  var movie2 = {title: 'taken 2', id: 202, image_url: 'taken_2_image.jpg'};
 
-  var movieTitleList = [movie1,movie2];
+  var movieTitleList = [movie1, movie2];
 
   beforeEach(inject(function($controller, $rootScope, $q){
     deferred = $q.defer();
