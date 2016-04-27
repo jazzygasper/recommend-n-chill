@@ -7,7 +7,8 @@ recommendNChill.service('MovieSearchService', ['$http', function($http) {
   };
 
   function _handleResponseFromApi(response) {
-    return response.data.map(function(searchResults) {
+    var thing = response.data.results
+    return thing.map(function(searchResults) {
       return {title: searchResults.title, id: searchResults.id, image_url: searchResults.backdrop_path};
     });
   };

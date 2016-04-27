@@ -12,12 +12,15 @@ recommendNChill.controller('recommendNChill', ['MovieSearchService', function(Mo
     self.movieSearchResults = result;
   }
 
-  self.addMovie = function(newMovieid){
+  self.addMovie = function(newMovieId){
+    console.log(newMovieId)
+    // var newMovieNumber = parseInt(newMovieId)
     var result = self.movieSearchResults.filter( function(movieObject) {
-        return movieObject.id === newMovieid;
+        return movieObject.id === newMovieId;
       });
     if (_notAdded(result[0]))
       this.movies.push(result[0]);
+      self.movieSearchResults = [];
   };
 
   self.removeMovie = function(movieId){
