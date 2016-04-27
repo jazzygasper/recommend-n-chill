@@ -15,10 +15,11 @@
           <button id="add" ng-click='controller.addMovie(movie.id)'>Add Movie</button>
         </li>
       </div>
-      <div id='watched-list'>
+      <div class='watched-list'>
         <li ng-repeat="movie in controller.movies">
           <p> {{ movie.title }} </p>
           <img src="http://image.tmdb.org/t/p/w500/{{ movie.image_url }}">
+          <button id='remove-movie' ng-click='controller.removeMovie(movie.id)'>Remove Movie</button>
         </li>
     </div>
   </body>

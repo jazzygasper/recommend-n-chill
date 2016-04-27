@@ -13,8 +13,6 @@ recommendNChill.controller('recommendNChill', ['MovieSearchService', function(Mo
   }
 
   self.addMovie = function(newMovieId){
-    console.log(newMovieId)
-    // var newMovieNumber = parseInt(newMovieId)
     var result = self.movieSearchResults.filter( function(movieObject) {
         return movieObject.id === newMovieId;
       });
