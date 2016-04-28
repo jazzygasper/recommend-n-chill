@@ -37,7 +37,9 @@ describe('movieListController', function(){
   });
 
   it('has a list of movies', function(){
-    expect(ctrl.movies).toEqual(movieTitleList);
+    httpBackend.flush();
+    expect(ctrl.movies[0].title).toEqual(movieTitleList[0].title);
+    // expect(ctrl.movies).toEqual([movie1, movie2]);
   });
 
   it('adds movie to list', function() {
