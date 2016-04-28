@@ -2,7 +2,15 @@ This is the list html in the div
 <div id="movies" ng-controller='movieListController as list'>
 
   <input type=text id='new-movie' placeholder='Add movie' ng-model='movieName'/>
-  <button id='add-movie' ng-click='list.addMovie(movieName)'>Add Movie</button>
+  <button id='search-movie' ng-click='list.searchForMovie(movieName)'>Search</button>
+  <div id='search-results'>
+    <li ng-repeat='movie in list.movieSearchResults'>
+      <p> {{ movie.title }} </p>
+      <img src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
+      <button id="add" ng-click='controller.addMovie(movie.id)'>Add Movie</button>
+    </li>
+  </div>
+
 
   <p ng-repeat='movie in list.movies'>
    <span>{{ movie }}</span> <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>

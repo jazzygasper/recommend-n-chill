@@ -7,7 +7,15 @@ describe('recommendNChill', function(){
     expect(list.last().getText()).toEqual('Scorpion King');
   });
 
-  it('adds a movie', function() {
+  it('displays search results', function(){
+    browser.get('/');
+    $('#new-movie').sendKeys('Taken');
+    $('#search-movie').click();
+    var searchList = $$('#search-results li p');
+    expect(searchList.getText()).toContain('Taken')
+  })
+
+  xit('adds a movie', function() {
     browser.get('/');
     $('#new-movie').sendKeys('Taken');
     $('#add-movie').click();

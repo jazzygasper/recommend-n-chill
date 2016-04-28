@@ -9,7 +9,6 @@ recommendNChill.service('movieSearchService', ['$http', function($http){
   };
 
   function _handleApiResponse(response) {
-    console.log(response.data.results);
     var results = response.data.results;
     return results.map(function(response){
       return { title: response.title,

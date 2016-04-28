@@ -1,7 +1,16 @@
-recommendNChill.controller('movieListController', function(){
+recommendNChill.controller('movieListController', ['movieSearchService', function(movieSearchService){
   var self = this;
 
   self.movies = ['Armageddon', 'Scorpion King'];
+
+  self.searchForMovie = function(title) {
+    movieSearchService.searchFor(title)
+    .then(_storeMovieResults);
+  }
+
+  function _storeMovieResults(result) {
+    self.movieSearchResults = result;
+  }
 
   self.addMovie = function(movie) {
     self.movies.push(movie);
@@ -12,4 +21,4 @@ recommendNChill.controller('movieListController', function(){
     self.movies.splice(index, 1);
   }
 
-});
+}]);
