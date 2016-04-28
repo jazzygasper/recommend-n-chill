@@ -1,4 +1,4 @@
-This is the list html in the div
+MOVIE LIST WOO
 <div id="movies" ng-controller='movieListController as list'>
 
   <input type=text id='new-movie' placeholder='Add movie' ng-model='movieName'/>
@@ -7,13 +7,13 @@ This is the list html in the div
     <li ng-repeat='movie in list.movieSearchResults'>
       <p> {{ movie.title }} </p>
       <img src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-      <button id="add" ng-click='controller.addMovie(movie.id)'>Add Movie</button>
+      <button id="add-movie" ng-click='list.addMovie(movie.id)'>Add Movie</button>
     </li>
   </div>
 
 
   <p ng-repeat='movie in list.movies'>
-   <span>{{ movie }}</span> <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
+   <span>{{ movie.title }}</span> <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
   </p>
 
 </div>

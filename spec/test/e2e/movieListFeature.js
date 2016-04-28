@@ -1,7 +1,8 @@
 describe('recommendNChill', function(){
   var list = $$('#movies p span');
+  var searchList = $$('#search-results li p');
 
-  it('displays list of movies', function(){
+  xit('displays list of movies', function(){
     browser.get('/');
     expect(list.first().getText()).toEqual('Armageddon');
     expect(list.last().getText()).toEqual('Scorpion King');
@@ -11,18 +12,18 @@ describe('recommendNChill', function(){
     browser.get('/');
     $('#new-movie').sendKeys('Taken');
     $('#search-movie').click();
-    var searchList = $$('#search-results li p');
-    expect(searchList.getText()).toContain('Taken')
-  })
+    expect(searchList.getText()).toContain('Taken');
+  });
 
-  xit('adds a movie', function() {
+  it('adds a movie', function() {
     browser.get('/');
     $('#new-movie').sendKeys('Taken');
+    $('#search-movie').click();
     $('#add-movie').click();
     expect(list.last().getText()).toEqual('Taken');
-  })
+  });
 
-  it('removes a movie from list', function() {
+  xit('removes a movie from list', function() {
     browser.get('/');
     $('#remove-movie').click();
     expect(list.count()).toEqual(1);

@@ -16,7 +16,7 @@ describe('movieListController', function(){
     movieSearchService = jasmine.createSpyObj('movieSearchService', ['searchFor']);
     movieSearchService.searchFor.and.returnValue($q.when(movieTitleList));
 
-    scope = $rootScope
+    scope = $rootScope;
 
     ctrl = $controller('movieListController', {
       movieSearchService: movieSearchService
