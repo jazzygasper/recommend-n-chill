@@ -1,7 +1,9 @@
-recommendNChill.controller('movieListController', ['movieSearchService', function(movieSearchService){
+recommendNChill.controller('movieListController', ['movieSearchService', 'databaseService', function(movieSearchService, databaseService){
   var self = this;
 
-  self.movies = [];
+  Movie = $resource('/movies');
+
+  self.movies = Movie.query();
 
   self.searchForMovie = function(title) {
     movieSearchService.searchFor(title)
@@ -12,7 +14,6 @@ recommendNChill.controller('movieListController', ['movieSearchService', functio
     self.movies.unshift(movie);
     self.movieSearchResults = null;
   };
-
 
   self.removeMovie = function(movie) {
     var index = self.movies.indexOf(movie);

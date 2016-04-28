@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   respond_to :json
   def index
-    render  json: Movie.all
+    render json: Movie.all
   end
 
   def destroy
@@ -14,7 +14,6 @@ class MoviesController < ApplicationController
 
   # def show
   #   @movie = Movie.find(params[:id])
-  #
   # end
 
   private

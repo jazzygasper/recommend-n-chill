@@ -29,8 +29,8 @@ describe('movieListController', function(){
     expect(ctrl.movieSearchResults).toEqual(movieTitleList);
   });
 
-  xit('has a list of movies', function(){
-    expect(ctrl.movies).toEqual(movies);
+  it('has a list of movies', function(){
+    expect(ctrl.movies).toEqual(movieTitleList);
   });
 
   it('adds movie to list', function() {

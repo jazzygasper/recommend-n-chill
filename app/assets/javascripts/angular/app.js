@@ -1,4 +1,4 @@
-var recommendNChill = angular.module('recommendNChill', ['ngRoute']);
+var recommendNChill = angular.module('recommendNChill', ['ngRoute', 'ngResource']);
 
   recommendNChill.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
