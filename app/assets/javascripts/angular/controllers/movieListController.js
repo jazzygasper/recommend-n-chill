@@ -1,4 +1,4 @@
-recommendNChill.controller('movieListController', ['movieSearchService', 'databaseService', function(movieSearchService, databaseService){
+recommendNChill.controller('movieListController', ['movieSearchService', '$resource', function(movieSearchService, $resource){
   var self = this;
 
   Movie = $resource('/movies');
