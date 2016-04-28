@@ -7,13 +7,14 @@ MOVIE LIST WOO
     <li ng-repeat='movie in list.movieSearchResults'>
       <p> {{ movie.title }} </p>
       <img src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-      <button id="add-movie" ng-click='list.addMovie(movie.id)'>Add Movie</button>
+      <button id="add-movie" ng-click='list.addMovie(movie)'>Add Movie</button>
     </li>
   </div>
 
 
   <p ng-repeat='movie in list.movies'>
-   <span>{{ movie.title }}</span> <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
+   <span>{{ movie.title }}</span>
+   <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
   </p>
 
 </div>

@@ -8,7 +8,7 @@ describe('movieListController', function(){
   var movie2 = {title: 'taken 2', id: 20, poster_path: 'taken_2_image.jpg'};
 
   var movieTitleList = [movie1, movie2];
-  var movies = ['Armageddon', 'Scorpion King'];
+
 
   beforeEach(inject(function($controller, $rootScope, $q){
     deffered = $q.defer();
@@ -29,17 +29,19 @@ describe('movieListController', function(){
     expect(ctrl.movieSearchResults).toEqual(movieTitleList);
   });
 
-  it('has a list of movies', function(){
+  xit('has a list of movies', function(){
     expect(ctrl.movies).toEqual(movies);
   });
 
   it('adds movie to list', function() {
-    ctrl.addMovie('Taken');
-    expect(ctrl.movies).toContain('Taken');
+    ctrl.addMovie(movie1);
+    expect(ctrl.movies).toContain(movie1);
   });
 
   it('removes movies', function() {
-    ctrl.removeMovie('Armageddon');
-    expect(ctrl.movies.length).toEqual(1);
+    ctrl.addMovie(movie1);
+    ctrl.addMovie(movie2);
+    ctrl.removeMovie(movie1);
+    expect(ctrl.movies).toEqual([movie2]);
   });
 });

@@ -8,11 +8,8 @@ recommendNChill.controller('movieListController', ['movieSearchService', functio
     .then(_storeMovieResults);
   };
 
-  self.addMovie = function(movieId) {
-    var result = self.movieSearchResults.filter(function(movie){
-      return movieId === movie.id;
-    });
-    self.movies.unshift(result[0]);
+  self.addMovie = function(movie) {
+    self.movies.unshift(movie);
     self.movieSearchResults = null;
   };
 
