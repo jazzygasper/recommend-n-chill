@@ -23,8 +23,11 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
   };
 
   self.removeMovie = function(movie) {
-    console.log(movie);
     $resource('/movies/:id').remove({id: movie.id});
+    Movie.query().$promise
+    .then(function(response){
+      self.movies = response;
+    });
   };
 
   function _storeMovieResults(result) {

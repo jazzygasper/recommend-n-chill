@@ -5,20 +5,15 @@ class MoviesController < ApplicationController
   end
 
   def create
-    respond_with Movie.create(movie_params)
+    Movie.create(movie_params)
+    render nothing: true, status: 201
   end
 
   def destroy
-    respond_with Movie.destroy(params[:id])
+    Movie.destroy(params[:id])
+    render nothing: true, status: 204
   end
 
-  def show
-    respond_with Movie.find(params[:id])
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @movie }
-    # end
-  end
 
   private
 

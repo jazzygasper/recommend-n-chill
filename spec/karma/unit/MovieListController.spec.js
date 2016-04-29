@@ -5,8 +5,8 @@ describe('movieListController', function(){
   var deffered, scope;
 
   var movieSearch = 'Taken';
-  var movie1 = {title: 'taken 1', id: 10, poster_path: 'taken_1_image.jpg'};
-  var movie2 = {title: 'taken 2', id: 20, poster_path: 'taken_2_image.jpg'};
+  var movie1 = {title: 'taken 1', movie_id: 10, poster_path: 'taken_1_image.jpg'};
+  var movie2 = {title: 'taken 2', movie_id: 20, poster_path: 'taken_2_image.jpg'};
 
   var movieTitleList = [movie1, movie2];
 
@@ -48,9 +48,11 @@ describe('movieListController', function(){
   });
 
   it('removes movies', function() {
+    console.log(ctrl.movies);
     ctrl.addMovie(movie1);
     ctrl.addMovie(movie2);
     ctrl.removeMovie(movie1);
+    console.log(ctrl.movies);
     expect(ctrl.movies.length).toEqual(1);
   });
 });
