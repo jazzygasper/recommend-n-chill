@@ -43,13 +43,14 @@ describe('movieListController', function(){
   });
 
   it('adds movie to list', function() {
-    expect(ctrl.movies).toContain(movie1);
+    ctrl.addMovie(movie1);
+    expect(ctrl.movies[0].title).toContain(movie1.title);
   });
 
   it('removes movies', function() {
     ctrl.addMovie(movie1);
     ctrl.addMovie(movie2);
     ctrl.removeMovie(movie1);
-    expect(ctrl.movies).toEqual([movie2]);
+    expect(ctrl.movies.length).toEqual(1);
   });
 });

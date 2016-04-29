@@ -4,17 +4,21 @@ class MoviesController < ApplicationController
     render json: Movie.all
   end
 
-  def destroy
-    respond_with Movie.destroy(params[:id])
-  end
-
   def create
     respond_with Movie.create(movie_params)
   end
 
-  # def show
-  #   @movie = Movie.find(params[:id])
-  # end
+  def destroy
+    respond_with Movie.destroy(params[:id])
+  end
+
+  def show
+    respond_with Movie.find(params[:id])
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @movie }
+    # end
+  end
 
   private
 
