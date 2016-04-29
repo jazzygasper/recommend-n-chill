@@ -13,6 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  margin-left: 250px;
+  font-family: Impact;
+}
+div#search-results li {
+  list-style-type: none;
+}
+hr {
+  width: 150px;
+  float: left;
+}
 img {
   width: 150px;
 }

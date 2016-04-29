@@ -6,8 +6,10 @@ MOVIE LIST WOO
   <div id='search-results'>
     <li ng-repeat='movie in list.movieSearchResults'>
       <p> {{ movie.title }} </p>
-      <img src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}">
-      <button id="add-movie" onClick="this.value=''" ng-click='list.addMovie(movie)'>Add Movie</button>
+      <p><img src="http://image.tmdb.org/t/p/w500/{{ movie.poster_path }}"></p>
+      <p><button id="add-movie" onClick="this.value=''" ng-click='list.addMovie(movie)'>Add Movie</button></p>
+      <hr>
+      <br>
     </li>
   </div>
 
