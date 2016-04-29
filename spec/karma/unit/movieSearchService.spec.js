@@ -21,4 +21,3 @@ describe('movieSearchService', function(){
     httpBackend.flush();
   });
 });
-  
