@@ -3,10 +3,7 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
   var Movie = $resource('/movies');
   self.movies = [];
 
-  Movie.query().$promise
-  .then(function(response){
-    self.movies = response;
-  });
+  _renderMovieList();
 
   self.searchForMovie = function(title) {
     movieSearchService.searchFor(title)
@@ -17,28 +14,25 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
     var entry = Movie.save({title: movie.title,
                          movie_id: movie.id,
                         movie_url: movie.poster_path});
-
     self.movies.unshift(entry);
     self.movieSearchResults = null;
+    _renderMovieList();
   };
 
   self.removeMovie = function(movie) {
     $resource('/movies/:id').remove({id: movie.id});
-    Movie.query().$promise
-    .then(function(response){
-      self.movies = response;
-    });
+    _renderMovieList();
     };
 
   function _storeMovieResults(result) {
     self.movieSearchResults = result;
   }
 
-  // function _renderMovieList(){
-  //   return Movie.query().$promise
-  //   .then(function(response){
-  //     self.movies = response;
-  //   });
-  //   }
+  function _renderMovieList(){
+    return Movie.query().$promise
+    .then(function(response){
+      self.movies = response;
+    });
+    }
 
 }]);
