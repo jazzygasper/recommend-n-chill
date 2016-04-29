@@ -18,11 +18,14 @@ describe('movieListController', function(){
 
     movieSearchService = jasmine.createSpyObj('movieSearchService', ['searchFor']);
     movieSearchService.searchFor.and.returnValue($q.when(movieTitleList));
+    renderListService = jasmine.createSpyObj('renderListService', ['show']);
+    renderListService.show.and.returnValue($q.when(movieTitleList));
 
     scope = $rootScope;
 
     ctrl = $controller('movieListController', {
-      movieSearchService: movieSearchService
+      movieSearchService: movieSearchService,
+      renderListService: renderListService
 
     });
 
@@ -38,6 +41,7 @@ describe('movieListController', function(){
 
   it('has a list of movies', function(){
     httpBackend.flush();
+    console.log(ctrl.movies[0]);
     expect(ctrl.movies[0].title).toEqual(movieTitleList[0].title);
     // expect(ctrl.movies).toEqual([movie1, movie2]);
   });

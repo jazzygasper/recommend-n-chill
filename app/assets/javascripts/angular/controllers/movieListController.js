@@ -1,6 +1,8 @@
-recommendNChill.controller('movieListController', ['movieSearchService', '$resource', function(movieSearchService, $resource){
+recommendNChill.controller('movieListController', ['movieSearchService', '$resource', 'renderListService', function(movieSearchService, $resource, renderListService){
   var self = this;
   var Movie = $resource('/movies');
+  var renderedList = renderListService
+
   self.movies = [];
 
   _renderMovieList();
@@ -22,17 +24,14 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
   self.removeMovie = function(movie) {
     $resource('/movies/:id').remove({id: movie.id});
     _renderMovieList();
-    };
+  };
 
   function _storeMovieResults(result) {
     self.movieSearchResults = result;
   }
 
   function _renderMovieList(){
-    return Movie.query().$promise
-    .then(function(response){
-      self.movies = response;
-    });
-    }
+    self.movies = renderedList.show()
+  }
 
 }]);
