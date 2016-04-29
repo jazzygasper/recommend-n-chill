@@ -14,7 +14,6 @@ class MoviesController < ApplicationController
     render nothing: true, status: 204
   end
 
-
   private
 
     def movie_params
