@@ -4,7 +4,7 @@ describe('recommendNChill', function(){
 
   beforeEach(function(){
     browser.get('/');
-  })
+  });
 
   it('displays search results', function(){
     $('#new-movie').sendKeys('Taken');
@@ -26,4 +26,12 @@ describe('recommendNChill', function(){
     $('#remove-movie').click();
     expect(watchedList.count()).toEqual(0);
   });
+
+  it('displays a recommended', function() {
+  browser.get('/');
+  $('#recommend-a-movie').click();
+  // console.log($('#recommend-a-movie').getText());
+  expect($('#recommendedMovie').getText()).toContain("Recommended movie:");
+  expect($('#recommendedMovie').getText()).not.toEqual("Recommended movie:");
+});
 });
