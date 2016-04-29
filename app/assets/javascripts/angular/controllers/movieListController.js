@@ -3,7 +3,13 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
 
   Movie = $resource('/movies');
 
-  self.movies = Movie.query();
+  var apiResponse = Movie.query().$promise
+  .then(function(response){
+    self.movies = response;
+    console.log(self.movies);
+
+  });
+  // self.movies = apiResponse;
 
   self.searchForMovie = function(title) {
     movieSearchService.searchFor(title)
