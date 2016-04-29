@@ -1,4 +1,4 @@
-recommendNChill.controller('movieListController', ['movieSearchService', '$resource', function(movieSearchService, $resource){
+recommendNChill.controller('movieListController', ['movieSearchService', '$resource','movieSelectService', function(movieSearchService, $resource,movieSelectService){
   var self = this;
   var Movie = $resource('/movies');
   self.movies = [];
@@ -34,5 +34,12 @@ recommendNChill.controller('movieListController', ['movieSearchService', '$resou
       self.movies = response;
     });
     }
+
+  self.randomMovie = function(){
+    movieSelectService.fetchMovie(movieSelectService.generateRandomNumber())
+    .then(function(response){
+      self.displaySelectedMovie = response;
+    });
+};
 
 }]);
