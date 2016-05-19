@@ -1,24 +1,30 @@
 describe('recommendNChill', function(){
-  var movies = $$('#movies p span');
-  var movieCount = 2;
 
-  it('shows a list of movies', function(){
+  it('see list of search results', function(){
     browser.get('/');
-    expect(movies.first().getText()).toEqual('Armageddon');
-    expect(movies.last().getText()).toEqual('Scorpion King');
+    $('#new-movie').sendKeys('taken');
+    $('#search').click();
+    // var movieSearchResults = element.all(by.repeater('movie in controller.movieSearchResults'));
+    var movieSearchResults = element(by.css('.search-results')).$$('p');
+    expect(movieSearchResults.getText()).toContain('Taken 2');
   });
 
-  it('can add a film to list', function(){
+  it('add movie to watched list', function(){
     browser.get('/');
-    $('#new-movie').sendKeys('Pitch Perfect');
-    $('#add-movie').click();
-
-    expect(movies.last().getText()).toEqual('Pitch Perfect');
+    $('#new-movie').sendKeys('taken');
+    $('#search').click();
+    $('#add').click();
+    var movieWatchedList = element(by.css('.watched-list')).$$('p');
+    expect(movieWatchedList.getText()).toContain('Taken');
   });
 
   it('can remove a film from list', function(){
     browser.get('/');
+    $('#new-movie').sendKeys('taken');
+    $('#search').click();
+    $('#add').click();
     $('#remove-movie').click();
-    expect(movies.count()).toEqual(movieCount - 1);
+    var movieWatchedList = element(by.css('.watched-list')).$$('p');
+    expect(movieWatchedList.getText()).not.toContain('Taken');
   });
 });

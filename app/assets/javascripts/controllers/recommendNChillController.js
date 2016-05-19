@@ -1,14 +1,34 @@
-recommendNChill.controller('recommendNChill', function(){
+recommendNChill.controller('recommendNChill', ['MovieSearchService', function(MovieSearchService){
   var self = this;
-  self.movies = ['Armageddon', 'Scorpion King'];
+  self.movieSearchResults = [];
+  self.movies = [];
 
-  self.addMovie = function(newMovie){
-    this.movies.push(newMovie);
+  self.searchForMovie = function(title) {
+    MovieSearchService.searchFor(title)
+    .then(_storeMovieResults);
   };
 
-  self.removeMovie = function(movie){
-    var index = this.movies.indexOf(movie);
-    this.movies.splice(index, 1);
+  function _storeMovieResults(result) {
+    self.movieSearchResults = result;
+  }
+
+  self.addMovie = function(newMovieId){
+    var result = self.movieSearchResults.filter( function(movieObject) {
+        return movieObject.id === newMovieId;
+      });
+    if (_notAdded(result[0]))
+      this.movies.push(result[0]);
+      self.movieSearchResults = [];
   };
 
-});
+  self.removeMovie = function(movieId){
+    var result = this.movies.filter( function(movieObject) {
+        return movieObject.id === movieId;
+      });
+    this.movies.splice(result, 1);
+  };
+
+  function _notAdded(movie) {
+    return self.movies.indexOf(movie) === -1;
+  }
+}]);

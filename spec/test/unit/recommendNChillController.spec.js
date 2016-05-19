@@ -1,26 +1,46 @@
 describe('recommendNChillController', function(){
   beforeEach(module('recommendNChill'));
 
-  var ctrl;
+  var ctrl, MovieSearchService;
+  var deferred, scope;
 
-  beforeEach(inject(function($controller){
-    ctrl = $controller('recommendNChill');
+  var movieSearch = 'taken';
+  var movie1 = {title: 'taken 1', id: 10, image_url: 'taken_1_image.jpg'};
+  var movie2 = {title: 'taken 2', id: 202, image_url: 'taken_2_image.jpg'};
+
+  var movieTitleList = [movie1, movie2];
+
+  beforeEach(inject(function($controller, $rootScope, $q){
+    deferred = $q.defer();
+
+    MovieSearchService = jasmine.createSpyObj('MovieSearchService', ['searchFor']);
+    MovieSearchService.searchFor.and.returnValue($q.when(movieTitleList));
+
+    scope = $rootScope;
+
+    ctrl = $controller('recommendNChill', {
+      MovieSearchService: MovieSearchService
+    });
   }));
 
-  it('has a list of movies', function(){
-    var movies = ['Armageddon', 'Scorpion King'];
-    expect(ctrl.movies).toEqual(movies);
+  it('fetches movie titles based on search from API', function() {
+    ctrl.searchForMovie(movieSearch);
+    scope.$apply();
+    expect(ctrl.movieSearchResults).toEqual(movieTitleList);
   });
 
   it('adds a movie to the list', function(){
-    ctrl.addMovie('Pitch Perfect');
-    expect(ctrl.movies.pop()).toEqual('Pitch Perfect');
+    ctrl.searchForMovie(movieSearch);
+    scope.$apply();
+    ctrl.addMovie(10);
+
+    expect(ctrl.movies).toContain(movie1);
   });
 
   it('removes a movie to the list', function(){
-    var movies = ['Armageddon', 'Scorpion King'];
-    ctrl.removeMovie('Armageddon');
-    expect(ctrl.movies).toEqual(['Scorpion King']);
+    ctrl.movies = [movie1, movie2];
+    ctrl.removeMovie(movie1.id);
+    expect(ctrl.movies).toEqual([movie2]);
   });
 
 });
