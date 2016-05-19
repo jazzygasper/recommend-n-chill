@@ -1,28 +1,10 @@
-== README
+== Recommend 'n' Chill
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app has been designed to solve the perpetual problem of making decisions.
+It is currently targeted at films—surely most people you know have stumbled upon the endless Netflix/Amazon trawling, unable to make a decision, until now!
 
-Things you may want to cover:
+As it is, Recommend 'n' Chill takes a list of films that you have watched (entered manually), and consults a copious API to return a suggestion currently based on the filter of what you haven't watched (and probably didn't even know existed!).
 
-* Ruby version
+It has potential to be rolled out to other social activities, such as restaurants, galleries, nights out, weekend plans, perhaps even travelling.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+As it is, Recommend 'n' Chill has been test-driven, and developed with a Rails API to store your list. It uses AngularJS on the front-end to pull information from The Movie Database API, which host a comprehensive list of films.
