@@ -15,16 +15,27 @@
  */
 
 body {
-  margin-left: 250px;
+  margin-left: 30%;
   font-family: Impact;
+  font-size: 30px;
 }
+
 div#search-results li {
   list-style-type: none;
+  margin-left: 200px;
 }
+
 hr {
-  width: 150px;
+  width: 100px;
   float: left;
 }
+
 img {
-  width: 150px;
+  width: 200px;
+}
+
+div#recommended-movie {
+  float: ;
+  display: inline;
+  margin: -300px 0px 0px 0px;
 }

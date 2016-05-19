@@ -19,7 +19,9 @@ MOVIE LIST WOO
    <button id='remove-movie' ng-click='list.removeMovie(movie)'>-</button>
   </p>
 
-  <button id="recommend-a-movie" ng-click='list.randomMovie()'>Random Movie</button>
-  <p id="recommendedMovie">Recommended movie: {{list.displaySelectedMovie.title}}</p>
+  <div id='recommended-movie'>
+    <button id="recommend-a-movie" ng-click='list.randomMovie()'>Random Movie</button>
+    <p id="recommendedMovie">Recommended movie: {{list.displaySelectedMovie.title}}</p>
     <img src="http://image.tmdb.org/t/p/w500/{{list.displaySelectedMovie.poster_path}}">
+  </div>
 </div>
